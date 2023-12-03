@@ -67,6 +67,8 @@ app.get('/coba', (req, res) => {
 //     res.send('Hello post method');
 // });
 
+app.get("/", (req, res) => res.send("Bismillah berhasil");
+
 app.listen(PORT, () => {
     console.log(`Server berhasil running di port ${PORT}`);
 })
