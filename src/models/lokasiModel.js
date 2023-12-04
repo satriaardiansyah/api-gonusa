@@ -7,8 +7,14 @@ const getAllLokasi = () => {
     return dbPool.execute(SQLQuery);
 }
 
+const getAllLokasiHome = () => {
+    const SQLQuery = 'SELECT namaLokasi, image_path FROM lokasi';
+
+    return dbPool.execute(SQLQuery);
+}
+
 const getAllLokasiHobby = (body) => {
-    const SQLQuery = `select namaLokasi, description, image_path FROM lokasi INNER JOIN hobby on hobby.idHobby = lokasi.hobbyid_FK WHERE hobby.namaHobby = '${body}';`;
+    const SQLQuery = `SELECT namaLokasi, description, image_path, rating FROM lokasi INNER JOIN hobby on hobby.idHobby = lokasi.hobbyid_FK WHERE hobby.namaHobby = '${body}';`;
 
     return dbPool.execute(SQLQuery);
 }
@@ -25,9 +31,26 @@ const createNewLokasi = (body) => {
     return dbPool.execute(SQLQuery);            
 }
 
+const updateLokasi = (body, idLokasi) => {
+    const SQLQuery = `UPDATE LOKASI 
+                        SET namaLokasi='${body.namaLokasi}', description='${body.description}', image_path='${body.image_path}', rating=${body.rating} 
+                        WHERE idLokasi=${idLokasi}`;
+
+    return dbPool.execute(SQLQuery);
+}
+
+const deleteLokasi = (idLokasi) => {
+    const SQLQuery = ` DELETE FROM lokasi WHERE idLokasi='${idLokasi}'`;
+
+    return dbPool.execute(SQLQuery);
+}
+
 module.exports = {
     getAllLokasi,
     getDetailLokasi,
     createNewLokasi,
     getAllLokasiHobby,
+    updateLokasi,
+    deleteLokasi,
+    getAllLokasiHome,
 }

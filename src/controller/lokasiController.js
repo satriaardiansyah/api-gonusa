@@ -16,6 +16,23 @@ const getAllLokasi = async (req, res) => {
     }
 }
 
+const getAllLokasiHome = async (req, res) => {
+    try {
+        const [data] = await LokasiModel.getAllLokasiHome();
+
+        res.json({
+            message: "Get all lokasi home data success",
+            data: data
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server error',
+            serverMessage: error,
+        })
+    }
+}
+
+
 const getAllLokasiHobby = async (req, res) => {
     const {hobby} = req.params;
 
@@ -85,9 +102,50 @@ const createNewLokasi = async (req, res) => {
     }
 }
 
+
+const updateLokasi = async (req, res) => {
+    const {idLokasi} = req.params;
+    const {body} = req;
+    try {
+        await LokasiModel.updateLokasi(body, idLokasi);
+        res.json({
+            message: 'UPDATE lokasi success',
+            data: {
+                id: idLokasi,
+                ...body
+            },
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server Error',
+            serverMessage: error,
+        })
+    }
+}
+
+const deleteLokasi = async (req, res) => {
+    const {idLokasi} = req.params;
+    try {
+        await LokasiModel.deleteLokasi(idLokasi);
+        res.json({
+            message: "DELETE lokasi success",
+            data: null
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server Error',
+            serverMessage: error,
+        })
+    }
+}
+
+
 module.exports = {
     getAllLokasi,
     getDetailLokasi,
     createNewLokasi,
     getAllLokasiHobby,
+    updateLokasi,
+    deleteLokasi,
+    getAllLokasiHome,
 }
