@@ -32,6 +32,31 @@ const getAllLokasiHome = async (req, res) => {
     }
 }
 
+const searchLokasi = async (req, res) => {
+    const {namaLokasi} = req.params;
+
+    try {
+        const [data] = await LokasiModel.searchLokasi(namaLokasi);
+
+        if (data.length === 0) {
+            //handle jika data tidak ditemukan
+            return res.status(404).json({
+                message: "Data not found",
+            });
+        }
+
+        res.json({
+            message: "Get detail data success",
+            data: data
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server Error',
+            serverMessage: error,
+        })
+    }
+}
+
 
 const getAllLokasiHobby = async (req, res) => {
     const {hobby} = req.params;
@@ -103,6 +128,26 @@ const createNewLokasi = async (req, res) => {
 }
 
 
+// const updateLokasiAsync = async (req, res) => {
+//     const {idLokasi} = req.params;
+//     const {body} = req;
+//     try {
+//         await LokasiModel.updateLokasi(body, idLokasi);
+//         res.json({
+//             message: 'UPDATE lokasi success',
+//             data: {
+//                 id: idLokasi,
+//                 ...body
+//             },
+//         })
+//     } catch (error) {
+//         res.status(500).json({
+//             message: 'Server Error',
+//             serverMessage: error,
+//         })
+//     }
+// }
+
 const updateLokasi = async (req, res) => {
     const {idLokasi} = req.params;
     const {body} = req;
@@ -148,4 +193,5 @@ module.exports = {
     updateLokasi,
     deleteLokasi,
     getAllLokasiHome,
+    searchLokasi,
 }

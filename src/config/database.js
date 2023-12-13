@@ -1,11 +1,20 @@
-const mysql = require('mysql2');
+// import { Sequelize } from "sequelize";
 
-const dbPool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'gonusa-test',
-});
+// const db = new Sequelize('gonusa-test', 'root', '', {
+//     host: "localhost",
+//     dialect: "mysql"
+// });
+
+// export default db;
+
+// const mysql = require('mysql2');
+
+// const dbPool = mysql.createPool({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'gonusa-test',
+// });
 
 
-module.exports = dbPool.promise();
+// module.exports = dbPool.promise();

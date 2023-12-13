@@ -1,4 +1,4 @@
-const dbPool = require('../config/database');
+const dbPool = require('../config/db.js');
 
 const getAllUsers = () => {
     const SQLQuery = 'SELECT * FROM users';
@@ -7,20 +7,26 @@ const getAllUsers = () => {
     
 }
 
-const createNewUser = (body) => {
-    const SQLQuery = `INSERT INTO users (name, email, address)
-                      VALUE ('${body.name}', '${body.email}', '${body.address}')`;
+const registerUsers = (body) => {
+    const SQLQuery = `INSERT INTO users (emailUsers, namaUsers, passwordUsers)
+                      VALUE ('${body.name}', '${body.email}', '${body.password}')`;
 
     return dbPool.execute(SQLQuery);
 }
 
-const updateUser = (body, idUser) => {
-    const SQLQuery = `  UPDATE users 
-                        SET name='${body.name}', email='${body.email}', address='${body.address}'
-                        WHERE id=${idUser}`;
+const loginUsers = (body) => {
+    const SQLQuery = `SELECT * FROM users 
+                      WHERE emailUsers = '${body.email}' AND passwordUsers = '${body.password}'`;
 
     return dbPool.execute(SQLQuery);
-} 
+}
+
+
+const updateUser = (body, idUser) => {
+    const SQLQuery = `UPDATE users SET namaUsers='${body.name}', emailUsers='${body.email}', passwordUsers='${body.address}' WHERE idUsers=${idUser}`;
+
+    return dbPool.execute(SQLQuery);
+}
 
 const deleteUser = (idUser) => {
     const SQLQuery = ` DELETE FROM users WHERE id='${idUser}'`;
@@ -31,7 +37,8 @@ const deleteUser = (idUser) => {
 
 module.exports = {
     getAllUsers,
-    createNewUser,
+    registerUsers,
     updateUser,
     deleteUser,
+    loginUsers,
 }

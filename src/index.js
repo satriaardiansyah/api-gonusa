@@ -1,11 +1,10 @@
 require('dotenv').config()
+
 const PORT = process.env.PORT || 5000;
 const express = require('express');
 
 const usersRoutes = require('./routes/users');
 const hobbyRoutes = require('./routes/hobbyRoute');
-const homeRoutes = require('./routes/homeRoute');
-const detailRoutes = require('./routes/detailRoute');
 const lokasiRoutes = require('./routes/lokasiRoute');
 
 const middlewareLogRequest = require('./middleware/logs');
@@ -15,15 +14,12 @@ const app = express();
 app.use(middlewareLogRequest);
 app.use(express.json());
 
+
 app.use('/assets', express.static('public/images'));
 
 app.use('/users', usersRoutes);
 
 app.use('/hobby', hobbyRoutes);
-
-app.use('/home', homeRoutes);
-
-app.use('/detail', detailRoutes);
 
 app.use('/lokasi', lokasiRoutes);
 

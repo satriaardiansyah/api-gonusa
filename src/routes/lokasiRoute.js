@@ -8,9 +8,12 @@ router.get('/', lokasiController.getAllLokasiHome);
 
 router.get('/all', lokasiController.getAllLokasi);
 
+
 router.get('/:hobby', lokasiController.getAllLokasiHobby);
 
-router.post('/', lokasiController.createNewLokasi);
+router.get('/search/:namaLokasi', lokasiController.searchLokasi);
+
+router.post('/add', lokasiController.createNewLokasi);
 
 router.get('/:idLokasi', lokasiController.getDetailLokasi);
 
