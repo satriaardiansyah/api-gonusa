@@ -92,7 +92,7 @@ const getDetailLokasi = async (req, res) => {
         if (data.length === 0) {
             //handle jika data tidak ditemukan
             return res.status(404).json({
-                message: "Data not found",
+                message: "Data not found1",
             });
         }
 

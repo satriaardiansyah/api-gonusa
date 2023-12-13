@@ -86,14 +86,14 @@ const logoutUsers = async (req, res) => {
 
 
 const updateUser = async (req, res) => {
-    const {idUser} = req.params;
+    const {idUsers} = req.params;
     const {body} = req;
     try {
-        await UsersModel.updateUser(body, idUser);
+        await UsersModel.updateUser(body, idUsers);
         res.json({
             message: 'UPDATE user success',
             data: {
-                id: idUser,
+                id: idUsers,
                 ...body
             },
         })
@@ -107,9 +107,9 @@ const updateUser = async (req, res) => {
 
 
 const deleteUser = async (req, res) => {
-    const {idUser} = req.params;
+    const {idUsers} = req.params;
     try {
-        await UsersModel.deleteUser(idUser)
+        await UsersModel.deleteUser(idUsers);
         res.json({
             message: "DELETE user success",
             data: null

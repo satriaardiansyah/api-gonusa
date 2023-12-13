@@ -23,13 +23,13 @@ const loginUsers = (body) => {
 
 
 const updateUser = (body, idUser) => {
-    const SQLQuery = `UPDATE users SET namaUsers='${body.name}', emailUsers='${body.email}', passwordUsers='${body.address}' WHERE idUsers=${idUser}`;
+    const SQLQuery = `UPDATE users SET nameUsers='${body.nameUsers}', emailUsers='${body.emailUsers}', passwordUsers='${body.passwordUsers}' WHERE idUsers=${idUser}`;
 
     return dbPool.execute(SQLQuery);
 }
 
-const deleteUser = (idUser) => {
-    const SQLQuery = ` DELETE FROM users WHERE id='${idUser}'`;
+const deleteUser = (idUsers) => {
+    const SQLQuery = ` DELETE FROM users WHERE idUsers='${idUsers}'`;
 
     return dbPool.execute(SQLQuery);
 }

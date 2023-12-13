@@ -4,12 +4,11 @@ const lokasiController = require('../controller/lokasiController');
 
 const router = express.Router();
 
-router.get('/', lokasiController.getAllLokasiHome);
+// router.get('/', lokasiController.getAllLokasiHome);
 
 router.get('/all', lokasiController.getAllLokasi);
 
-
-router.get('/:hobby', lokasiController.getAllLokasiHobby);
+router.get('/hobby/:hobby', lokasiController.getAllLokasiHobby);
 
 router.get('/search/:namaLokasi', lokasiController.searchLokasi);
 

@@ -14,10 +14,10 @@ router.post('/logout', UserController.logoutUsers);
 router.get('/', UserController.getAllUsers);
 
 // update dengan method patch
-router.patch('/:idUser', UserController.updateUser);
+router.patch('/:idUsers', UserController.updateUser);
 
 // Delete dengan method delete
-router.delete('/:idUser', UserController.deleteUser);
+router.delete('/:idUsers', UserController.deleteUser);
 
 
 module.exports = router;

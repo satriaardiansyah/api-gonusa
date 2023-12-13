@@ -26,7 +26,7 @@ const getAllLokasiHobby = (body) => {
 }
 
 const getDetailLokasi = (idLokasi) => {
-    const SQLQuery = `SELECT * FROM lokasi where idLokasi='${idLokasi}' `;
+    const SQLQuery = `SELECT * FROM lokasi where idLokasi='${idLokasi}'`;
 
     return dbPool.execute(SQLQuery);
 }
