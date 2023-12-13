@@ -116,7 +116,7 @@ const createNewLokasi = async (req, res) => {
     try {
         await LokasiModel.createNewLokasi(body);
         res.status(201).json({
-            message: 'CREATE new users success',
+            message: 'CREATE new lokasi success',
             data: body
         })
     } catch (error) {

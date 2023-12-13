@@ -8,7 +8,7 @@ const getAllUsers = () => {
 }
 
 const registerUsers = (body) => {
-    const SQLQuery = `INSERT INTO users (emailUsers, namaUsers, passwordUsers)
+    const SQLQuery = `INSERT INTO users (nameUsers, emailUsers, passwordUsers)
                       VALUE ('${body.name}', '${body.email}', '${body.password}')`;
 
     return dbPool.execute(SQLQuery);
