@@ -4,7 +4,7 @@ const lokasiController = require('../controller/lokasiController');
 
 const router = express.Router();
 
-// router.get('/', lokasiController.getAllLokasiHome);
+router.get('/', lokasiController.getAllLokasiHome);
 
 router.get('/all', lokasiController.getAllLokasi);
 

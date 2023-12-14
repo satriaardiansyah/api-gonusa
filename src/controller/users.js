@@ -14,8 +14,33 @@ const getAllUsers = async (req, res) => {
             serverMessage: error,
         })
     }
+}
 
-    
+const getNameUser = async (req, res) => {
+    const {idUsers} = req.params;
+
+    try {
+        const [data] = await UsersModel.getNameUser(idUsers);
+
+        if (data.length === 0) {
+            //handle jika data tidak ditemukan
+            return res.status(404).json({
+                message: "Data not found1",
+            });
+        }
+
+        res.json({
+            message: "Get detail data success",
+            data: {
+                id: data
+            }
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server Error',
+            serverMessage: error,
+        })
+    }
 }
 
 const registerUsers = async (req, res) => {
@@ -129,4 +154,5 @@ module.exports = {
     deleteUser,
     loginUsers,
     logoutUsers,
+    getNameUser,
 }

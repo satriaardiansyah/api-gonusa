@@ -7,6 +7,12 @@ const getAllUsers = () => {
     
 }
 
+const getNameUser = (idUsers) => {
+    const SQLQuery = `SELECT nameUsers from users WHERE idUsers='${idUsers}'`;
+
+    return dbPool.execute(SQLQuery);
+}
+
 const registerUsers = (body) => {
     const SQLQuery = `INSERT INTO users (nameUsers, emailUsers, passwordUsers)
                       VALUE ('${body.name}', '${body.email}', '${body.password}')`;
@@ -41,4 +47,5 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUsers,
+    getNameUser,
 }

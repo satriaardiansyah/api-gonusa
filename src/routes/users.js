@@ -6,6 +6,8 @@ const router = express.Router();
 //Create dengan method post
 router.post('/register', UserController.registerUsers);
 
+router.get('/:idUsers', UserController.getNameUser);
+
 router.post('/login', UserController.loginUsers);
 
 router.post('/logout', UserController.logoutUsers);
